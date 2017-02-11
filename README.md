@@ -13,3 +13,6 @@ I love R Markdown and effectively abandoned LaTeX for it. I have a suite of R Ma
 
 ## Note
 I borrow the templates from Steve and customize them for UVic ECON, but cv is not working due to Fontawesome setting issue.
+
+
+Only logos and colors are changed for UVic style.
