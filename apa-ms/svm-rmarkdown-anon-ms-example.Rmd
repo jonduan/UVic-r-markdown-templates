@@ -1,11 +1,12 @@
 ---
+#http://svmiller.com/blog/2016/02/svm-r-markdown-manuscript/
 output: 
   pdf_document:
-    citation_package: natbib
+    citation_package: natbib #or natbib biblatex
     keep_tex: true
     fig_caption: true
     latex_engine: pdflatex
-    template: ~/Dropbox/miscelanea/svm-r-markdown-templates/svm-latex-anon-ms.tex
+    template: G:/project2/rmd-doc/rmd-doc/templates/svm-latex-anon-ms.tex #change  "G:/project2/rmd-doc/rmd-doc/" to working directory 
 title: "An Example Title with a Really Long Title: Also a Subtitle"
 runhead: "A Running Head"
 thanks: "Replication files are available on the author's Github account (http://github.com/svmiller). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: svmille@clemson.edu."
@@ -18,15 +19,18 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
-bibliography: ~/Dropbox/master.bib
-biblio-style: apsr
+#spacing: #is an optional field. If it is set as “double”, the ensuing document is double-spaced. “single” is the only other valid entry for this field, though not including the entry in the YAML metadata amounts to singlespacing the document by default. 
+bibliography: G:/project2/rmd-doc/rmd-doc/templates/references.bib #change  "G:/project2/rmd-doc/rmd-doc/" to working directory 
+biblio-style: apalike  #  or apsr
+#http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles
+#http://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations
 indent: yes
 colorlinks: true
 ---
 
 # Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec felis placerat, suscipit risus eget, condimentum ex. Nunc laoreet mi nisi, eu volutpat orci porttitor at. Nunc a bibendum diam. Aenean condimentum, neque at gravida imperdiet, orci arcu laoreet risus, eu gravida erat leo et ante. Suspendisse tempor non eros nec vestibulum. Morbi cursus posuere nunc, semper dignissim mi lacinia non. Nunc sagittis ipsum in mattis volutpat. Morbi in mauris ut urna rhoncus pellentesque. Morbi hendrerit sodales metus, at placerat velit bibendum at. Etiam ut est id ligula hendrerit commodo et eget lorem. See my previous scholarship [@miller2013tdpi; @miller2016ieea; @miller2016etst].
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec felis placerat, suscipit risus eget, condimentum ex. Nunc laoreet mi nisi, eu volutpat orci porttitor at. Nunc a bibendum diam. Aenean condimentum, neque at gravida imperdiet, orci arcu laoreet risus, eu gravida erat leo et ante. Suspendisse tempor non eros nec vestibulum. Morbi cursus posuere nunc, semper dignissim mi lacinia non. Nunc sagittis ipsum in mattis volutpat. Morbi in mauris ut urna rhoncus pellentesque. Morbi hendrerit sodales metus, at placerat velit bibendum at. Etiam ut est id ligula hendrerit commodo et eget lorem. See my previous scholarship [@xie2015dynamic; @hogan2009providing; @hammerstrom2007pacific].
 
 Proin vitae metus at turpis aliquet pulvinar. Suspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam tincidunt euismod mauris, pulvinar scelerisque nulla accumsan et. Praesent tempus ipsum varius enim eleifend, ut blandit arcu molestie. Vestibulum tempor est blandit ligula porta consequat. Praesent condimentum auctor ligula, ac pellentesque ante fringilla egestas. Praesent accumsan scelerisque eros nec mattis. Donec eget aliquet metus. Sed auctor, lacus mollis hendrerit lobortis, nisl felis vehicula libero, sed aliquet elit augue et eros.
 
@@ -50,6 +54,8 @@ Mauris a nisl condimentum, molestie sem nec, eleifend tortor. Phasellus consecte
 
 Ut mollis fermentum lacinia. Cras at aliquam dui. Fusce eu nulla porta urna consectetur gravida. In molestie in lacus ut tincidunt. Maecenas blandit efficitur lacus, sit amet laoreet erat. Proin at interdum mi. Donec eleifend vestibulum pharetra. Aliquam aliquet turpis non ultrices rhoncus. Nam vestibulum leo id ipsum cursus varius. Suspendisse potenti.
 
+Application written in the R programming language [@RCoreTeam] using the Shiny framework [@Chang2015].
+
 
 \newpage
 
@@ -61,3 +67,7 @@ Ut mollis fermentum lacinia. Cras at aliquam dui. Fusce eu nulla porta urna cons
 \vspace*{-0.2in}
 \noindent
 -->
+
+
+
+# REFERENCES

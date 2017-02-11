@@ -1,15 +1,15 @@
 ---
 title: An Example R Markdown Document
 subtitle: (A Subtitle Would Go Here if This Were a Class)
-author: Steven V. Miller
-institute: Department of Political Science
-titlegraphic: /Dropbox/teaching/clemson-academic.png
+author: Jon Duan
+institute: Department of Economics
+titlegraphic: G:/project2/rmd-doc/rmd-doc/templates/ECON.png
 fontsize: 10pt
 output:
  beamer_presentation:
-    template: ~/Dropbox/miscelanea/svm-r-markdown-templates/svm-latex-beamer.tex
+    template: G:/project2/rmd-doc/rmd-doc/templates/svm-latex-beamer.tex
     keep_tex: true
-# toc: true
+ toc: true
  slide_level: 3
 ---
 

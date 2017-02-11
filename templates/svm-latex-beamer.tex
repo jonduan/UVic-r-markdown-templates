@@ -212,7 +212,7 @@ $if(institute)$\institute{$institute$}$endif$
 
 % \titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}} % <-- if you want to know what this looks like without it as a Markdown field. 
 % -----------------------------------------------------------------------------------------------------
-$if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$titlegraphic$}}$endif$
+$if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{$titlegraphic$}}$endif$
 
 % Some additional title page adjustments.
 %----------------------------------------
@@ -222,24 +222,24 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 
 \setbeamercovered{transparent}
 
-% Some optional colors. Change or add as you see fit.
+% Some optional colors. Change or add as you see fit. # to do replace clemson color to uvic color http://www.uvic.ca/brand/look-feel/colour/palette/index.php
 %---------------------------------------------------
-\definecolor{clemsonpurple}{HTML}{522D80}
-% \definecolor{clemsonorange}{HTML}{EA6A20}
- \definecolor{clemsonorange}{HTML}{F66733}
-\definecolor{uiucblue}{HTML}{003C7D}
-\definecolor{uiucorange}{HTML}{F47F24}
+\definecolor{uvicblue}{HTML}{002754}  %dark
+% \definecolor{uvicred}{HTML}{EA6A20}
+ \definecolor{uvicred}{HTML}{F66733}
+\definecolor{uvicdarkblue}{HTML}{005493} % not dark
+\definecolor{uvicyellow}{HTML}{F5AA1C}
 
 
 % Some optional color adjustments to Beamer. Change as you see fit.
 %------------------------------------------------------------------
-\setbeamercolor{frametitle}{fg=clemsonpurple,bg=white}
-\setbeamercolor{title}{fg=clemsonpurple,bg=white}
-\setbeamercolor{local structure}{fg=clemsonpurple}
-\setbeamercolor{section in toc}{fg=clemsonpurple,bg=white}
-% \setbeamercolor{subsection in toc}{fg=clemsonorange,bg=white}
-\setbeamercolor{footline}{fg=clemsonpurple!50, bg=white}
-\setbeamercolor{block title}{fg=clemsonorange,bg=white}
+\setbeamercolor{frametitle}{fg=uvicblue,bg=white}
+\setbeamercolor{title}{fg=uvicblue,bg=white}
+\setbeamercolor{local structure}{fg=uvicblue}
+\setbeamercolor{section in toc}{fg=uvicblue,bg=white}
+% \setbeamercolor{subsection in toc}{fg=uvicred,bg=white}
+\setbeamercolor{footline}{fg=uvicblue!50, bg=white}
+\setbeamercolor{block title}{fg=uvicred,bg=white}
 
 
 \let\Tiny=\tiny
@@ -275,8 +275,8 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 		\vspace*{1pt}%
             \insertframenumber/\inserttotalframenumber \hspace*{0.1cm}%
             \newline%
-            \color{clemsonpurple}{\rule{\paperwidth}{0.4mm}}\newline%
-            \color{clemsonorange}{\rule{\paperwidth}{.4mm}}%
+            \color{uvicblue}{\rule{\paperwidth}{0.4mm}}\newline%
+            \color{uvicred}{\rule{\paperwidth}{.4mm}}%
         }%
     \fi%
 }
@@ -285,13 +285,13 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 %-------------------------------------------------------------------------------------------------------
 \setbeamercolor{structure}{fg=blue}
 \setbeamercolor{local structure}{parent=structure}
-\setbeamercolor{item projected}{parent=item,use=item,fg=clemsonpurple,bg=white}
+\setbeamercolor{item projected}{parent=item,use=item,fg=uvicblue,bg=white}
 \setbeamercolor{enumerate item}{parent=item}
 
 % Adjust some item elements. More cosmetic things.
 %-------------------------------------------------
-\setbeamertemplate{itemize item}{\color{clemsonpurple}$$\bullet$$}
-\setbeamertemplate{itemize subitem}{\color{clemsonpurple}\scriptsize{$$\bullet$$}}
+\setbeamertemplate{itemize item}{\color{uvicblue}$$\bullet$$}
+\setbeamertemplate{itemize subitem}{\color{uvicblue}\scriptsize{$$\bullet$$}}
 \setbeamertemplate{itemize/enumerate body end}{\vspace{.6\baselineskip}} % So I'm less inclined to use \medskip and \bigskip in Markdown.
 
 % Okay, and begin the actual document...

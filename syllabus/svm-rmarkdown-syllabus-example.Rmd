@@ -4,7 +4,7 @@ output:
     keep_tex: true
     fig_caption: yes
     latex_engine: pdflatex
-    template: ~/Dropbox/miscelanea/svm-r-markdown-templates/svm-latex-syllabus.tex
+    template: G:/project2/rmd-doc/rmd-doc/templates/svm-latex-syllabus.tex # Need to modify for your working directory
 geometry: margin=1in
 
 title: "POSC 0000: A Class with an R Markdown Syllabus"
@@ -44,7 +44,8 @@ advdate <- function(obj, adv) {
 library(RefManageR)
 # library(knitcitations)
 # library(rcrossref)
-bib <- ReadBib("~/Dropbox/master.bib")
+# the path need to be modified to ../../ not ..\\..\\
+bib <- ReadBib("G:/project2/rmd-doc/rmd-doc/templates/references.bib")
 myopts <- BibOptions(bib.style = "authoryear", style="latex", first.inits=FALSE, max.names = 20)
 
 ```
@@ -64,7 +65,7 @@ You'll learn stuff in this class, I hope. Lorem ipsum dolor sit amet, consectetu
 # Required Readings
 
 ```{r, echo = FALSE, results="asis"} 
-bib["vasquez2009twp", "wagner2007ws"]
+bib["Chang2015", "RCoreTeam"]
 ``` 
 
 
@@ -86,7 +87,7 @@ I will detail the policy for this course below. Basically, don't cheat and try t
 
 ## Attendance Policy
 
-```{r, include=FALSE}
+```{r, include=FALSE, eval=FALSE, echo = FALSE}
 options(scipen=999)
 Attend <- read.csv("~/Dropbox/teaching/attendance-grades-relationship.csv")
 Attend$rgrade <- round(Attend$grade, 0)
@@ -108,17 +109,17 @@ library(kfigr)
 
 > *Showing up is 80 percent of life* -- Woody Allen, [via Marshall Brickman](http://quoteinvestigator.com/2013/06/10/showing-up/#note-6553-1)
 
-Students should be weary of skipping class. I deduct *all* participation points for a class after five unexcused absences and this can have important implications for a student's overall grade in the class. There is already a strong positive correlation between the percentage of classes a student has attended in the course and the student's final grade for the semester (*r* = `r round(cor(Attend$perattend, Attend$rgrade, use="complete.obs"), 3)`) for all `r nrow(Attend)` students I have taught since Fall 2014. 
+Students should be weary of skipping class. I deduct *all* participation points for a class after five unexcused absences and this can have important implications for a student's overall grade in the class. There is already a strong positive correlation between the percentage of classes a student has attended in the course and the student's final grade for the semester (*r* = ` round(cor(Attend$perattend, Attend$rgrade, use="complete.obs"), 3)`) for all ` nrow(Attend)` students I have taught since Fall 2014. 
 
-A simple linear regression of a student's final grade on percentage of classes attended for the semester for all classes I have taught since Fall 2014 suggests an increase of one percent in attendance for the semester leads to an estimated increase of `r round(M1$coefficients[2], 3)` in the student's final grade. Whereas one missed classes constitutes about a five-percent decrease in percentage attendance for the semester, one missed class means an estimated decrease of `r round(M1$coefficients[2], 3)*5` in the overall grade. The effect of attendance on the final grade for the class is precise (*t* = `r round(M1df$statistic[2], 3)`) and the likelihood that there is no actual relationship between attendance and final grade for the semester is almost zero. This simple linear model with just one predictor (attendance) provides a good fit as well (R$^2$ = `r round(summary(M1)$r.squared, 3)`). See `r figr("attendplot", TRUE, type="Figure")` in this document.
+A simple linear regression of a student's final grade on percentage of classes attended for the semester for all classes I have taught since Fall 2014 suggests an increase of one percent in attendance for the semester leads to an estimated increase of ` round(M1$coefficients[2], 3)` in the student's final grade. Whereas one missed classes constitutes about a five-percent decrease in percentage attendance for the semester, one missed class means an estimated decrease of ` round(M1$coefficients[2], 3)*5` in the overall grade. The effect of attendance on the final grade for the class is precise (*t* = ` round(M1df$statistic[2], 3)`) and the likelihood that there is no actual relationship between attendance and final grade for the semester is almost zero. This simple linear model with just one predictor (attendance) provides a good fit as well (R$^2$ = ` round(summary(M1)$r.squared, 3)`). See ` figr("attendplot", TRUE, type="Figure")` in this document.
 
-```{r attendplot, echo = FALSE, results="asis", cache=FALSE, fig.cap="A Scatterplot of the Relationship between Class Attendance and Final Grade", fig.height=4, fig.pos="H"}
+```{r attendplot, eval= FALSE ,echo = FALSE, results="asis", cache=FALSE, fig.cap="A Scatterplot of the Relationship between Class Attendance and Final Grade", fig.height=4, fig.pos="H"}
 Graph <- ggplot(Attend, aes(x = perattend, y = rgrade))
 Graph + geom_point() + labs(x="Percent Attendance in Class", y="Final Grade in Class (0-100)") + 
                               geom_smooth(method=lm)
 ```
 
-A student might object that attendance is partly endogenous to a grade since past classes deducted all participation points after five unexcused absences. This is true, but the findings hold even when I subset the data to cases where attendance is greater than 75% (i.e. roughly the threshold below which I deduct all participation points). Students who just meet the threshold for full participation points nevertheless get an estimated decrease of `r round(M2$coefficients[2], 3)*5` in their overall grade for each missed class. This effect is also precise (*t* = `r round(M2df$statistic[2], 3)`). Put another way, we would have observed this effect in my data if there were no *true* effect of attendance on grades about `r round(summary(M2)$coefficients[2,4]*100000)` times in 100,000 "trials" (i.e. *p* = `r round(summary(M2)$coefficients[2,4], 5)`), on average. That probability is effectively zero. *Attend class*.
+A student might object that attendance is partly endogenous to a grade since past classes deducted all participation points after five unexcused absences. This is true, but the findings hold even when I subset the data to cases where attendance is greater than 75% (i.e. roughly the threshold below which I deduct all participation points). Students who just meet the threshold for full participation points nevertheless get an estimated decrease of ` round(M2$coefficients[2], 3)*5` in their overall grade for each missed class. This effect is also precise (*t* = ` round(M2df$statistic[2], 3)`). Put another way, we would have observed this effect in my data if there were no *true* effect of attendance on grades about ` round(summary(M2)$coefficients[2,4]*100000)` times in 100,000 "trials" (i.e. *p* = ` round(summary(M2)$coefficients[2,4], 5)`), on average. That probability is effectively zero. *Attend class*.
 
 ## Late Arrival of the Professor Policy
 
@@ -144,7 +145,7 @@ There are **NO** make-ups for missed exams. Don't bother asking.
 
 ## Academic Dishonesty Policy
 
-Don’t cheat. Don’t be that guy. Yes, you. You know exactly what I’m talking about too.
+Don't cheat. Don't be that guy. Yes, you. You know exactly what I'm talking about too.
 
 ## Disabilities Policy
 
@@ -172,13 +173,13 @@ Read *all* associated documents on course website.
 
 ## `r advdate(mon, 2)`: The First Topic Where We Read John Vasquez
 
-```{r, echo = FALSE, results="asis"} 
+```{r, echo = FALSE, eval= FALSE,results="asis"} 
 bib[author = "vasquez"]
 ``` 
 
 ##  `r advdate(mon, 3)`: Read the Nos. 90-97 Items in My Bib
 
-```{r, echo = FALSE, results="asis"} 
+```{r, echo = FALSE, eval= FALSE,results="asis"} 
 bib[90:97]
 ``` 
 
@@ -186,7 +187,7 @@ bib[90:97]
 
 ##  `r advdate(mon, 4)`: Read Bib Item No. 120
 
-```{r, echo = FALSE, results="asis"} 
+```{r, echo = FALSE, eval= FALSE,results="asis"} 
 bib[120]
 ``` 
 
@@ -194,7 +195,7 @@ bib[120]
 
 ##  `r advdate(mon, 5)`: The Fourth Topic with Bib Item No. 510
 
-```{r, echo = FALSE, results="asis"} 
+```{r, echo = FALSE, eval= FALSE,results="asis"} 
 bib[510]
 ``` 
 

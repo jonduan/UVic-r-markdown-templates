@@ -5,7 +5,8 @@ output:
     keep_tex: true
     fig_caption: true
     latex_engine: pdflatex
-    template: ~/Dropbox/miscelanea/svm-r-markdown-templates/svm.latex.ms.tex
+    # setup the template file path 
+    template: G:/project2/rmd-doc/rmd-doc/templates/svm-latex-ms.tex
 title: "A Pandoc Markdown Article Starter and Template"
 thanks: "Replication files are available on the author's Github account (http://github.com/svmiller). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: svmille@clemson.edu."
 author:
@@ -18,8 +19,12 @@ geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
 # spacing: double
-bibliography: ~/Dropbox/master.bib
-biblio-style: apsr
+
+
+
+## setup bib file path
+bibliography: G:/project2/rmd-doc/rmd-doc/templates/references.bib #change  "G:/project2/rmd-doc/rmd-doc/" to working directory 
+biblio-style: apalike  #  or apsr
 ---
 
 # Introduction
@@ -28,7 +33,7 @@ Academic workflow, certainly in political science, is at a crossroads. The *Amer
 
 There are workflow implications to the Lacour controversy as well. Political science, for the foreseeable future, will struggle with the extent of [the data fraud perpetrated by Michael Lacour](http://stanford.edu/~dbroock/broockman_kalla_aronow_lg_irregularities.pdf) in an article co-authored with Donald P. Green in *Science*, the general scientific journal of record in the United States. A failure to reproduce LaCour's results with different samples uncovered a comprehensive effort by LaCour to "fake" data that provided results to what we felt or believed to be true [(i.e. "truthiness")](http://chronicle.com/article/LAffaire-LaCour/230905/). However, [fake data can have real consequences](http://kieranhealy.org/blog/archives/2015/05/20/fake-science-real-consequences/) for both the researcher and those who want to learn from it and use it for various purposes. Even research done honestly may suffer the same fate if researchers are not diligent in their workflow.
 
-These recent events underscore the DART push and cast a shadow over our workflow. However, good workflow has always been an issue in our discipline. Cloud storage services like [Dropbox](http://www.dropbox.com) are still relatively new among political scientists. Without cloud storage, previous workflow left open the possibility that work between a home computer and an office computer was lost as a function of a corrupted thumb drive, an overheated power supply, or, among other things, the wave of viruses that [would particularly affect Microsoft users every summer](http://money.cnn.com/2003/11/05/technology/microsoftbounty/). Social sciences, [unlike engineering](http://kieranhealy.org/blog/archives/2014/01/23/plain-text/), have traditionally relied on software like Microsoft Word for manuscript preparation though any word processor reduces workflow to a series of clicks and strokes on a keyboard. This is [a terrible way to track changes](http://www.nytimes.com/2013/04/19/opinion/krugman-the-excel-depression.html) or maintain version control. The addition of collaborators only compounds all the aforementioned issues. The proverbial left hand may not know what the right hand is doing.
+These recent events underscore the DART push and cast a shadow over our workflow. However, good workflow has always been an issue in our discipline. Cloud storage services like [Dropbox](http://www.dropbox.com) are still relatively new among political scientists. Without cloud storage, previous workflow left open the possibility that work between a home computer and an office computer was lost as a function of a corrupted thumb drive, an overheated power supply, or, among other things, the wave of viruses that [would particularly affect Microsoft users every summer](http://money.cnn.com/2003/11/05/technology/microsoftbounty/). Social sciences, [unlike engineering](http://kieranhealy.org/blog/archives/2014/01/23/plain-text/), have traditionally relied on software like Microsoft Word for manuscript preparation though any word processor reduces workflow to a series of clicks and strokes on a keyboard. This is [a terrible way to track changes](http://www.nytimes.com/2013/04/19/opinion/krugman-the-excel-depression.html) or maintain version control. The addition of collaborators only compounds all the aforementioned issues. The proverbial left hand may not know what the right hand is doing @fenner2012a.
 
 I think there is reason for optimism. We only struggle with it now because we have tools like [R Markdown](http://rmarkdown.rstudio.com/) and [Pandoc](http://pandoc.org/), more generally, that make significant strides in workflow. LaTeX resolved earlier issues of corrupted binary files by reducing documents to raw markup that was little more than raw text and revisions that could be easily kept as ["commented" text](http://tex.stackexchange.com/questions/11177/how-to-write-hidden-notes-in-a-latex-file). However, for all its benefits (including pretty PDFs), [LaTeX is *ugly* code](http://www-rohan.sdsu.edu/~aty/bibliog/latex/gripe.html) and does not provide means of seamlessly working with the actual data analysis itself. R Markdown both eliminates markup and allows the author and her collaborators to write and reproduce the manuscript in one fell swoop.
 
@@ -88,7 +93,7 @@ The next two fields pertain to the frontmatter of a manuscript. They should also
 
 The next items are optional and cosmetic. `geometry:` is a standard option in LaTeX. I set the margins at one inch, and you probably should too. `fontfamily:` is optional, but I use it to specify the Palatino font. The default option is Computer Modern Roman. `fontsize:` sets, intuitively, the font size. The default is 10-point, but I prefer 11-point. `spacing:` is an optional field. If it is set as "double", the ensuing document is double-spaced. "single" is the only other valid entry for this field, though not including the entry in the YAML metadata amounts to singlespacing the document by default. Notice I have this "commented out" in the example code.
 
-The final two options pertain to the bibliography. `bibliography:` specifies the location of the .bib file, so the author could make citations in the manuscript. `biblio-style` specifies the type of bibliography to use. You'll typically set this as APSR. You could also specify the relative path of [my *Journal of Peace Research* .bst file](http://svmiller.com/miscellany/journal-of-peace-research-bst-file/) if you are submitting to that journal.
+The final two options pertain to the bibliography. `bibliography:` specifies the location of the .bib file, so the author could make citations in the manuscript. `biblio-style` specifies the type of bibliography to use. You'll typically set this as APSR. You could also specify the relative path of [my *Journal of Peace Research* .bst file](http://svmiller.com/miscellany/journal-of-peace-research-bst-file/) if you are submitting to that journal @hogan2009providing.
 
 # Getting Started with Markdown Syntax
 
@@ -159,7 +164,7 @@ On that note, you could easily pass most LaTeX code through Markdown if you're w
 
 # Using R Markdown with Knitr
 
-Perhaps the greatest intrigue of R Markdown comes with the [`knitr` package](http://yihui.name/knitr/) provided by @xie2013ddrk. In other words, the author can, if she chooses, do the analysis in the Markdown document itself and compile/execute it in R.
+Perhaps the greatest intrigue of R Markdown comes with the [`knitr` package](http://yihui.name/knitr/) provided by @xie2015dynamic . In other words, the author can, if she chooses, do the analysis in the Markdown document itself and compile/execute it in R.
 
 Take, for example, this simple exercise using the `voteincome` data from the `Zelig` package. Suppose I want to explain the decision to vote using data from this package. I load in the data, clean the data, run the analyses, and present the results as a coefficient plot.
 
@@ -230,7 +235,7 @@ Adding `echo="FALSE"` inside the brackets to start the R chunk will omit the pre
 
 [^4]: I'm not sure if I'm ready to commit to this myself since my workflow is still largely derived from [Rob J. Hyndman's example](http://robjhyndman.com/hyndsight/workflow-in-r/). However, *knitr* has endless potential, especially when analyses can stored in cache, saved as chunks, or loaded in the preamble of a document to reference later in the manuscript.
 
-
+Application written in the R programming language [@RCoreTeam] using the Shiny framework [@Chang2015].
 
 
 <!--
